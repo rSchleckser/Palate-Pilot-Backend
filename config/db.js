@@ -1,15 +1,14 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-const User = require('./user');
-const Review = require('./review');
-const Country = require('./country');
-const Food = require('./food');
-
-const connectDB = async () =>{
+const connectDB = async () => {
     try {
-       await mongoose.connect(process.env.MONGO_URI);
-       console.log('MongoDB Connected')
+        const User = require('./user');
+        const Review = require('./review');
+        const Country = require('./country');
+        const Food = require('./food');
+        await mongoose.connect(process.env.MONGO_URI);
+        console.log('MongoDB Connected')
     } catch (error) {
         console.error(error)
     }
@@ -21,4 +20,3 @@ module.exports = {
     Food,
     Country
 }
-
