@@ -3,11 +3,18 @@ const dotenv = require('dotenv');
 dotenv.config();
 const express = require('express');
 const app = express();
+const connectDB = require('./config/db')
+
+
 const session = require('express-session');
 const PORT = process.env.PORT || 3000;
 const methodOverride = require('method-override');
 const axios = require('axios');
 const cors = require('cors');
+const { connect } = require('http2');
+
+//Connect Database
+connectDB();
 
 // ====== MIDDLEWARE ======
 app.set('view engine', 'ejs');
