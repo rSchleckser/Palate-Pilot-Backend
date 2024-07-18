@@ -15,6 +15,10 @@ app.use(express.json());
 app.use(methodOverride('_method'));
 app.use(cors())
 
+app.get('/',(req,res)=>{
+    res.send("Hello Collin!!")
+})
+
 
 
 // ===== SERVER LISTENER ===== 
