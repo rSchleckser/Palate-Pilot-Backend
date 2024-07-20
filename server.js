@@ -19,12 +19,19 @@ app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(methodOverride('_method'));
 app.use(cors())
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
-app.use('/', require ('./routes/home'))
+//Connect Server to Database 
+connectDB();
 
-app.use('/profiles', require ('./routes/profile'));
+//Routes
+app.use('/', require('./routes/home'))
+
+app.use('/profile', require('./routes/profile'))
+
+app.use('/favorites', require('./routes/favorites'));
+
+app.use('/review', require('./routes/reviews'))
+
 
 // ===== SERVER LISTENER ===== 
 const server = app.listen(PORT, () => {
