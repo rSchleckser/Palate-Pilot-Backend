@@ -9,6 +9,20 @@ const mongoURI = process.env.MONGO_URI;
 mongoose.connect(mongoURI)
     .then(() => {
         console.log('MongoDB connected');
+<<<<<<< HEAD
+
+        User.create({
+            name: 'Kevin Jones',
+            email: 'kevinjones@email.com',
+            password: 'poiuytrewq',
+        })
+            .then((user) => {
+                console.log('---- NEW USER ----\n', user);
+            })
+            .catch((error) => {
+                console.log('---- ERROR CREATING USER ----\n', error);
+            });
+=======
 console.log('user')
         // User.create({
         //     name: 'Kevin Jones',
@@ -21,6 +35,7 @@ console.log('user')
         //     .catch((error) => {
         //         console.log('---- ERROR CREATING USER ----\n', error);
         //     });
+>>>>>>> b6bbeef1d98bdf17bf4d9e4148df523298623244
 
         // Create Food
         Food.create({
