@@ -19,20 +19,15 @@ app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(methodOverride('_method'));
 app.use(cors())
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
-<<<<<<< HEAD
-app.get('/',(req,res)=>{
-    res.send("Hello Collin!!")
-})
+//Connect Server to Database 
+connectDB();
 
-app.use('/profiles', require('./routes/profile'))
-=======
-app.use('/', require ('./routes/home'))
->>>>>>> 95b22fefd98f52ce5a885e96ede50e696d428f74
+//Routes
+app.use('/', require('./routes/home'))
 
-app.use('/profiles', require ('./routes/profile'));
+app.use('/profile', require('./routes/profile'))
+
 
 // ===== SERVER LISTENER ===== 
 const server = app.listen(PORT, () => {
