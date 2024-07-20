@@ -1,43 +1,87 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 
- const { User} = require('./models/user');
- const { Food } = require('./models/food');
+const { User } = require('./models/user');
+const { Food } = require('./models/Food');
+const Country = require('./models/Country');
 
 const mongoURI = process.env.MONGO_URI;
 
-mongoose.connect(mongoURI)
-    .then(() => {
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(async () => {
         console.log('MongoDB connected');
-console.log('user')
-        // User.create({
+
+        // Seed User (uncomment if needed)
+        // await User.create({
         //     name: 'Kevin Jones',
         //     email: 'kevinjones@email.com',
         //     password: 'poiuytrewq',
         // })
-        //     .then((user) => {
-        //         console.log('---- NEW USER ----\n', user);
-        //     })
-        //     .catch((error) => {
-        //         console.log('---- ERROR CREATING USER ----\n', error);
-        //     });
+        // .then((user) => {
+        //     console.log('---- NEW USER ----\n', user);
+        // })
+        // .catch((error) => {
+        //     console.log('---- ERROR CREATING USER ----\n', error);
+        // });
 
-        // Create Food
-        Food.create({
-            name: 'Alfredo',
-            recipeLink: 'https://www.example.com/foodname',
-            description: 'Alfredo sauce is a rich, creamy sauce traditionally made with butter, heavy cream, and Parmesan cheese. It originates from Italy, where it was first created by Alfredo di Lelio in the early 20th century.',
-            image: 'poiuytrewq',
-            country: 'Italy',
-            reviews: "This Alfredo sauce is a luxurious blend of creamy, buttery goodness and savory Parmesan, making it a decadent delight for any pasta lover."
+        // Seed Food
+        const foods = await Food.create([
+            {
+                name: 'Butter Chicken',
+                recipeLink: 'https://www.example.com/butter-chicken',
+                description: 'A rich and creamy dish with a blend of spices.',
+                image: '/images/butter-chicken.jpg',
+                country: 'India',
+                reviews: 'Delicious and flavorful!'
+            },
+            {
+                name: 'Peking Duck',
+                recipeLink: 'https://www.example.com/peking-duck',
+                description: 'A famous duck dish known for its crispy skin.',
+                image: '/images/peking-duck.jpg',
+                country: 'China',
+                reviews: 'Crispy and flavorful!'
+            },
+            {
+                name: 'Sushi',
+                recipeLink: 'https://www.example.com/sushi',
+                description: 'A traditional Japanese dish with vinegared rice.',
+                image: '/images/sushi.jpg',
+                country: 'Japan',
+                reviews: 'Fresh and exquisite!'
+            }
+        ]);
+        
+        console.log('---- NEW FOODS ----\n', foods);
+
+        // Seed Country
+        await Country.create([
+            {
+                name: 'India',
+                continent: 'Asia',
+                foods: [foods[0]._id]
+            },
+            {
+                name: 'China',
+                continent: 'Asia',
+                foods: [foods[1]._id]
+            },
+            {
+                name: 'Japan',
+                continent: 'Asia',
+                foods: [foods[2]._id]
+            }
+        ])
+        .then((countries) => {
+            console.log('---- NEW COUNTRIES ----\n', countries);
         })
-            .then((food) => {
-                console.log('---- NEW FOOD ----\n', food);
-            })
-            .catch((error) => {
-                console.log('---- ERROR CREATING FOOD ----\n', error);
-            });
+        .catch((error) => {
+            console.log('---- ERROR CREATING COUNTRIES ----\n', error);
+        });
+
+        process.exit();
     })
     .catch((err) => {
         console.error('Error connecting to MongoDB', err);
+        process.exit(1);
     });
