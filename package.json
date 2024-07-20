@@ -1,5 +1,5 @@
 {
-  "name": "PalatePilot",
+  "name": "palatepilot",
   "version": "1.0.0",
   "description": "An application aimed at allowing users to explore popular foods of the world",
   "main": "server.js",
@@ -29,5 +29,6 @@
   },
   "devDependencies": {
     "@types/node": "^20.12.12"
-  }
+  },
+  "keywords": []
 }
