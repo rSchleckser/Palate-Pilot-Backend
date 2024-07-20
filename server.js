@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const express = require('express');
 const app = express();
-const connectDB = require('./models/index');
+const connectDB = require('./config/db');
 const bodyParser = require('body-parser');
 
 
@@ -22,11 +22,9 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get('/',(req,res)=>{
-    res.send("Hello Collin!!")
-})
+app.use('/', require ('./routes/home'))
 
-
+app.use('/profiles', require ('./routes/profile'));
 
 // ===== SERVER LISTENER ===== 
 const server = app.listen(PORT, () => {
