@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const { check, validationResult } = require('express-validator');
 
@@ -11,7 +11,7 @@ const User = require('../models/user');
 const isLoggedIn = require('../middleware/isLoggedIn');
 
 // @desc GET - User Profile Page
-router.get('/:userId', getUserProfile);
+router.get('/:userId', isLoggedIn, getUserProfile);
 
 // @route POST /
 // @desc Register user
@@ -54,23 +54,18 @@ router.post(
         }
       };
 
-      const jwtSecret = process.env.JWT_SECRET;
-
-    
       jwt.sign(
         payload,
-        jwtSecret,
-        { expiresIn: '1h' }, 
+        process.env.JWT_SECRET,
+        { expiresIn: '1h' },
         (err, token) => {
           if (err) throw err;
           res.json({ token });
         }
       );
-      console.log('JWT_SECRET:', process.env.JWT_SECRET);
-
     } catch (error) {
       console.error(error.message);
-      res.status(500).send(error);
+      res.status(500).send('Server Error');
     }
   }
 );
