@@ -1,7 +1,13 @@
 const express = require('express');
 <<<<<<< HEAD
+const { getUserProfile, updateUserProfile } = require('../controllers/profile');
+const isLoggedIn = require('../middleware/isLoggedIn');
+
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
+
+//@desc GET - User Profile Page
+router.get('/:userId', getUserProfile);
 
 // @route POST /
 // @desc Register user
@@ -21,16 +27,13 @@ router.post(
     res.send('Profile route');
   }
 );
-=======
-const { getUserProfile, updateUserProfile } = require('../controllers/profile');
-const isLoggedIn = require('../middleware/isLoggedIn');
-const router = express.Router();
-  
-//@desc GET - User Profile Page
-router.get('/:userId', getUserProfile);
 
 // // @desc PUT - Update User Profile
 // router.put('/:userId', updateUserProfile);
+=======
+
+  
+
 >>>>>>> 95b22fefd98f52ce5a885e96ede50e696d428f74
 
 module.exports = router;
