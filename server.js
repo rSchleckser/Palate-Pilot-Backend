@@ -28,6 +28,8 @@ app.use('/', require('./routes/home'))
 
 app.use('/profile', require('./routes/profile'))
 
+app.use('/favorites', require('./routes/favorites'));
+
 
 // ===== SERVER LISTENER ===== 
 const server = app.listen(PORT, () => {
