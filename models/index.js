@@ -22,7 +22,11 @@ db.on('error', (error) => console.log('Database error\n', error));
 
 //example import
 //const Food = require('')
+const User = require('./user');
+const Review = require('./review');
+const Country = require('./country');
+const Food = require('./food');
 
 module.exports = {
-    //Food
+    User, Review, Country, Food
 }
