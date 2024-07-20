@@ -1,5 +1,4 @@
 const express = require('express');
-<<<<<<< HEAD
 const { getUserProfile, updateUserProfile } = require('../controllers/profile');
 const isLoggedIn = require('../middleware/isLoggedIn');
 
@@ -30,10 +29,6 @@ router.post(
 
 // // @desc PUT - Update User Profile
 // router.put('/:userId', updateUserProfile);
-=======
 
-  
-
->>>>>>> 95b22fefd98f52ce5a885e96ede50e696d428f74
 
 module.exports = router;
