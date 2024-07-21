@@ -34,6 +34,12 @@ app.use('/favorites', require('./routes/favorites'));
 
 app.use('/review', require('./routes/reviews'))
 
+<<<<<<< HEAD
+=======
+app.use('/country', require('/routes/country'));
+
+
+>>>>>>> c8a5cee45a14641f35f5b3d754960cd8dd564eed
 // ===== SERVER LISTENER ===== 
 const server = app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
