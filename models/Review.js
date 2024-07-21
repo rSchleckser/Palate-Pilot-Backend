@@ -1,17 +1,26 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+const Schema = mongoose.Schema;
 
-const reviewSchema = new mongoose.Schema(
-    {
-      review_id: Number,
-      user_id: Number,
-      food_id: Number,
-      rating: Number,
-      comment: { type: String, required: true},
-    }
-);
+const reviewSchema = new Schema({
+  user_id: { 
+    type: Schema.Types.ObjectId, 
+    ref: 'User', // Assuming you have a User model
+    required: true 
+  },
+  food_id: { 
+    type: Schema.Types.ObjectId, 
+    ref: 'Food', 
+    required: true 
+  },
+  rating: { 
+    type: Number, 
+    required: true 
+  },
+  comment: { 
+    type: String, 
+    required: true 
+  }
+});
 
-// create the model and export it
 const Review = mongoose.model('Review', reviewSchema);
-
 module.exports = Review;
