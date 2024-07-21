@@ -26,7 +26,7 @@ const seedDB = async () => {
       { name: 'China', continent: 'Asia' },
       { name: 'Japan', continent: 'Asia' },
       { name: 'UnitedStates', continent: 'North America'}, 
-      { name: 'Mexico', continent: 'North America'}
+      { name: 'Mexico', continent: 'North America'},
     ]);
 
     console.log('---- NEW COUNTRIES ----\n', countries);

@@ -26,6 +26,8 @@ connectDB();
 //Routes
 app.use('/', require('./routes/home'))
 
+app.use('/auth', require('./routes/auth'));
+
 app.use('/profile', require('./routes/profile'))
 
 app.use('/favorites', require('./routes/favorites'));
