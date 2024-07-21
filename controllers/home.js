@@ -4,7 +4,7 @@ const axios = require('axios');
 // @desc GET - Home Page
 const getHomePage = async (req, res) => {
     try {
-        res.status(200).send('home/index');
+       res.send('hi')
     } catch (error) {
         res.status(404).render('404');
     }

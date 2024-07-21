@@ -1,34 +1,20 @@
 {
-  "name": "palatepilot",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "An application aimed at allowing users to explore popular foods of the world",
   "main": "server.js",
   "scripts": {
-    "test": "mocha",
-    "start": "node server.js",
-    "dev": "nodemon"
+    "server": "nodemon server.js",
+    "client": "npm run dev --prefix ../Palate-Pilot-Frontend/frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
-  "author": "Collin S, Richard S, Farid V, Anwar A",
-  "license": "ISC",
   "dependencies": {
-    "axios": "^1.7.2",
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.20.2",
-    "config": "^3.3.12",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.0",
     "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "ejs": "^3.1.10",
-    "express": "^4.19.2",
-    "express-ejs-layouts": "^2.5.1",
-    "express-session": "^1.18.0",
-    "express-validator": "^7.1.0",
-    "jsonwebtoken": "^9.0.2",
-    "method-override": "^3.0.0",
-    "mongodb": "^6.8.0",
-    "mongoose": "^8.5.1"
+    "method-override": "^3.0.0"
   },
   "devDependencies": {
-    "@types/node": "^20.12.12"
-  },
-  "keywords": []
+    "concurrently": "^7.0.0"
+  }
 }

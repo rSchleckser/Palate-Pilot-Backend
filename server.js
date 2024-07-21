@@ -2,31 +2,31 @@
 const dotenv = require('dotenv');
 dotenv.config();
 const express = require('express');
+const path = require('path');
 const app = express();
 const connectDB = require('./config/db');
-const bodyParser = require('body-parser');
-
-
-const session = require('express-session');
 const PORT = process.env.PORT || 3000;
 const methodOverride = require('method-override');
-const axios = require('axios');
 const cors = require('cors');
-const { connect } = require('http2');
 
 // ====== MIDDLEWARE ======
-app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(methodOverride('_method'));
-app.use(cors())
+app.use(cors());
 
-//Connect Server to Database 
+// Connect Server to Database 
 connectDB();
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, '../Palate-Pilot-Frontend/frontend/dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../Palate-Pilot-Frontend/frontend/dist/index.html'));
+});
 
 //Routes
 app.use('/', require('./routes/home'))
-
-app.use('/auth', require('./routes/auth'));
+app.use('/auth', require('./routes/auth'))
 
 app.use('/profile', require('./routes/profile'))
 
@@ -34,10 +34,12 @@ app.use('/favorites', require('./routes/favorites'));
 
 app.use('/review', require('./routes/reviews'))
 
-
 // ===== SERVER LISTENER ===== 
 const server = app.listen(PORT, () => {
-    console.log('listening at PORT ', PORT);
+  console.log(`Server is running on port ${PORT}`);
 });
 
 module.exports = server;
+
+
+
