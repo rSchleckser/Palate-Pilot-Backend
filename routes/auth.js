@@ -42,11 +42,10 @@ router.post(
             }
 
             // Check if password matches
-            const isMatch = await bcrypt.compare(password, user.password).catch(err => {
-                console.error('Error comparing passwords:', err);
-                throw new Error('Server Error');
-              });
-              
+            const isMatch = await bcrypt.compare(password, user.password);
+            if (!isMatch) {
+                return res.status(400).json({ errors: [{ msg: 'Invalid Password' }] });
+            }
 
             // Generate JWT
             const payload = {
@@ -65,7 +64,7 @@ router.post(
                 }
             );
         } catch (error) {
-            res.status(500).send(error);
+            res.status(500).send('Server Error');
         }
     }
 );
