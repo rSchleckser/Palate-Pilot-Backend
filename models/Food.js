@@ -23,11 +23,10 @@ const foodSchema = new Schema({
     ref: 'Country',
     required: true,
   },
-  reviews: {
+  reviews: [{
     type: Schema.Types.ObjectId,
-    ref: 'Reviews',
-    required: true,
-  }
+    ref: 'Review',
+  }]
 });
 
 const Food = mongoose.model('Food', foodSchema);
