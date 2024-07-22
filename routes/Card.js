@@ -2,9 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Card = require('../models/Card');
 
-
-
-outer.get('/Card', isLoggedIn, (req, res) => {
+router.get('/Card', (req, res) => {
   const Card = req.user.Card;
 
   try {
