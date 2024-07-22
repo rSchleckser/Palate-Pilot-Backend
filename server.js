@@ -31,6 +31,7 @@ app.use('/profile', require('./routes/profile'));
 app.use('/favorites', require('./routes/favorites'));
 app.use('/review', require('./routes/reviews'));
 app.use('/country', require('./routes/country')); 
+app.use('/Card', require ('./routes/Card'));
 
 // ===== SERVER LISTENER ===== 
 const server = app.listen(PORT, () => {
