@@ -2,7 +2,9 @@ const express = require('express');
 const router = express.Router();
 const Country = require('../models/Country');
 const Food = require('../models/Food');
+const { getCountry } = require('../controllers/countryController');
 
+router.get('/', getCountry);
 
 router.get('/:countryId/foods', async (req, res) => {
   try {
