@@ -1,13 +1,14 @@
 
 const express = require('express');
 const router = express.Router();
-const { getReview } = require('../controllers/reviewController');
 
 
 let reviews = [];
 
 
-router.get('/', getReview);
+router.get('/', (req, res) => {
+    res.json(reviews);
+});
 
 
 router.get('/:id', (req, res) => {
