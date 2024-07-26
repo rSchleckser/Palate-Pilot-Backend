@@ -15,9 +15,10 @@ app.use(cors());
 connectDB();
 
 // Routes
-app.use('/food', require('./routes/food'));
 app.use('/', require('./routes/home'));
 app.use('/auth', require('./routes/auth'));
+app.use('/food', require('./routes/food'));
+
 // app.use('/profile', require('./routes/profile'));
 // app.use('/favorites', require('./routes/favorites'));
 // app.use('/review', require('./routes/reviews'));
@@ -25,11 +26,11 @@ app.use('/auth', require('./routes/auth'));
 // app.use('/Card', require ('./routes/Card'));
 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, '../Palate-Pilot-Frontend/frontend/dist')));
+app.use(express.static(path.join(__dirname, '../Palate-Pilot-Frontend/dist')));
 
 // Serve React app for all other routes
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../Palate-Pilot-Frontend/frontend/dist/index.html'));
+  res.sendFile(path.resolve(__dirname, '../Palate-Pilot-Frontend/dist/index.html'));
 });
 
 // ===== SERVER LISTENER ===== 

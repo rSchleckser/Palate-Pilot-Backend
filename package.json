@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "server": "nodemon server.js",
-    "client": "npm run dev --prefix ../Palate-Pilot-Frontend/frontend",
+    "client": "npm run dev --prefix ../Palate-Pilot-Frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\" "
   },
   "dependencies": {
