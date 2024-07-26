@@ -1,10 +1,9 @@
 const express = require('express');
-const foodController = require('../controllers/foodController')
-// const { getFood, createFood, updateFood, deleteFood } = require('../controllers/');
+const getFood = require('../controllers/foodController');
 const router = express.Router();
 
 //-----------GET ROUTES-------------//
-router.get('/', foodController.getFood);
+router.get('/', getFood);
 
 // //-----------POST ROUTES-------------//
 // router.post('/', createFood);
