@@ -1,20 +1,19 @@
 const express = require('express');
 const path = require('path');
-const app = express();
 const connectDB = require('./config/db');
-const PORT = process.env.PORT || 3000;
 const methodOverride = require('method-override');
 const cors = require('cors');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
 
 // ====== MIDDLEWARE ======
 app.use(express.json());
 app.use(methodOverride('_method'));
-const cors = require('cors');
 app.use(cors({
-  origin: 'https://palate-pilot.onrender.com', 
-  credentials: true, 
+  origin: 'https://palate-pilot.onrender.com',
+  credentials: true,
 }));
-
 
 // Connect Server to Database 
 connectDB();
@@ -26,8 +25,7 @@ app.use('/profile', require('./routes/profile'));
 app.use('/favorites', require('./routes/favorites'));
 app.use('/reviews', require('./routes/reviews'));
 // app.use('/country', require('./routes/country')); 
-// app.use('/Card', require ('./routes/Card'));
-
+// app.use('/Card', require('./routes/Card'));
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, '../Palate-Pilot-Frontend/dist')));
