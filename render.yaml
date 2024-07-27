@@ -16,5 +16,5 @@ services:
     routes:
       - type: redirect
         from: /
-        to: /api
+        to: /
 
