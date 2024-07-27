@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: palate-pilot-backend
+    env: node
+    plan: free
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        fromDatabase:
+          name: palate-pilot-db
+          property: connectionString
+      - key: JWT_SECRET
+        sync: true
+    autoDeploy: true
