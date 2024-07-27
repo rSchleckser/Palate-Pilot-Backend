@@ -9,7 +9,12 @@ const cors = require('cors');
 // ====== MIDDLEWARE ======
 app.use(express.json());
 app.use(methodOverride('_method'));
-app.use(cors());
+const cors = require('cors');
+app.use(cors({
+  origin: 'https://palate-pilot.onrender.com', 
+  credentials: true, 
+}));
+
 
 // Connect Server to Database 
 connectDB();
