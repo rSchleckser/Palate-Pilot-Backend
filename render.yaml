@@ -9,9 +9,12 @@ services:
       - key: NODE_ENV
         value: production
       - key: MONGO_URI
-        fromDatabase:
-          name: palate-pilot-db
-          property: connectionString
+        value: mongodb+srv://itspancakeman:C2RMk06cKtb5YZTY@collinst.24mhinb.mongodb.net/?retryWrites=true&w=majority&appName=CollinSt
       - key: JWT_SECRET
-        sync: true
+        value: mylittlesecret
     autoDeploy: true
+    routes:
+      - type: redirect
+        from: /
+        to: /api
+
