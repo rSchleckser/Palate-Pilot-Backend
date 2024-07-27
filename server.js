@@ -15,34 +15,22 @@ app.use(cors());
 connectDB();
 
 // Routes
-app.use('/', require('./routes/home'));
-<<<<<<< HEAD
+// app.use('/', require('./routes/home'));
 app.use('/auth', require('./routes/auth'));
 app.use('/food', require('./routes/food'));
 
-=======
-// app.use('/auth', require('./routes/auth'));
->>>>>>> e9d590499763d5b5ba6aa6d7f6eeeabf939cd58d
 // app.use('/profile', require('./routes/profile'));
 // app.use('/favorites', require('./routes/favorites'));
-app.use('/review', require('./routes/reviews'));
-app.use('/country', require('./routes/country')); 
+// app.use('/review', require('./routes/reviews'));
+// app.use('/country', require('./routes/country')); 
 // app.use('/Card', require ('./routes/Card'));
-app.use('/food', require ('./routes/food'));
+// app.use('/food', require ('./routes/food'));
 
 // Serve static files from the React app
-<<<<<<< HEAD
 app.use(express.static(path.join(__dirname, '../Palate-Pilot-Frontend/dist')));
-=======
-app.use(express.static(path.join(__dirname, '../Palate-Pilot-Frontend/frontend/dist'))); 
->>>>>>> e9d590499763d5b5ba6aa6d7f6eeeabf939cd58d
 
 app.get('*', (req, res) => {
-<<<<<<< HEAD
   res.sendFile(path.resolve(__dirname, '../Palate-Pilot-Frontend/dist/index.html'));
-=======
-  res.sendFile(path.resolve(__dirname, '../Palate-Pilot-Frontend/frontend/dist/index.html')); 
->>>>>>> e9d590499763d5b5ba6aa6d7f6eeeabf939cd58d
 });
 
 // ===== SERVER LISTENER ===== 
