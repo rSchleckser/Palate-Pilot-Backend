@@ -1,18 +1,18 @@
 const express = require('express');
 const router = express.Router();
-const bodyParser = require('body-parser');
-const User = require('../models/user');
+const Favorites = require('../controllers/favorites')
 const isLoggedIn = require('../middleware/isLoggedIn');
 
-router.get('/favorites', isLoggedIn, (req, res) => {
-    const favorites = req.user.favorites;
+// Get all favorites for a user
+router.get('/favorites', isLoggedIn, Favorites.getAllFavorites);
 
-    try {
-        res.status(200).send(favorites);
-    } catch (error) {
-        res.status(404).render('404');
-    }
-});
+// Add a new favorite
+router.post('/favorites', isLoggedIn, Favorites.addNewFavorite);
 
-module.exports = 
-    router
+// Update a favorite
+router.put('/favorites/:id', isLoggedIn, Favorites.updateFavorite);
+
+// Delete a favorite
+router.delete('/favorites/:id', isLoggedIn, Favorites.deleteFavorite);
+
+module.exports = router;
