@@ -4,7 +4,6 @@ const router = express.Router();
 
 //-----------GET ROUTES-------------//
 router.get('/', foodController.getFood);
-router.get('/', foodController.getFood);
 
 // //-----------POST ROUTES-------------//
 // router.post('/', createFood);
